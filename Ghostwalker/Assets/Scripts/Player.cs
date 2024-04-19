@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movement = new Vector2((Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0),
+        var movement = new Vector2(
+            (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0),
             (Input.GetKey(KeyCode.S) ? -1 : 0) + (Input.GetKey(KeyCode.W) ? 1 : 0));
         rb.velocity = movement.normalized * moveSpeed;
         
