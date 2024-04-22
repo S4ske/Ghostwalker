@@ -2,19 +2,12 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public GameObject bullet;
-    public Transform shotPoint;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform shotPoint;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (timeBtwShots <= 0)
