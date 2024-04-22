@@ -31,9 +31,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (hp <= 0)
-            Destroy(gameObject);
-        
         UpdateParameters();
         
         movement = new Vector2(
@@ -44,10 +41,6 @@ public class Player : MonoBehaviour
 
         if (facingRight && movement.x < -1e-8 || !facingRight && movement.x > 1e-8)
             Flip();
-        if (movement.x > 0)
-        {
-            hp = Mathf.Clamp(hp - 0.1f, 0, maxHp);
-        }
     }
 
     private void FixedUpdate()
