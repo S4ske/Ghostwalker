@@ -15,6 +15,6 @@ public class TextFotCoin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = text.ToString();
+        text.text = $"COINS: {Coin}";
     }
 }

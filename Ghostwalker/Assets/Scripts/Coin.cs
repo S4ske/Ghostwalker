@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class coins : MonoBehaviour
+public class Coin : MonoBehaviour
 {
     void Start()
     {
@@ -18,9 +15,9 @@ public class coins : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && collision.isTrigger)
         {
-            TextFotCoin.Coin += 1;
+            TextFotCoin.Coin++;
             Destroy(gameObject);
         }
     }
