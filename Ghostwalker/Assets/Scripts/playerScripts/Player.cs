@@ -16,9 +16,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxArmor;
     private float mana;
     [SerializeField] private float maxMana;
+    
 
     private Animator animator;
     private Rigidbody2D rb;
+    
+    public Vector3 Instance => transform.position;
     
     private void Start()
     {
