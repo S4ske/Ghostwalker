@@ -7,9 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerParameter armorParameter;
     [SerializeField] private PlayerParameter manaParameter;
 
-    private static Transform playerTransform;
-    public static Transform Instance => playerTransform;
-    
+    public static Transform Instance { get; }
+
 
     private float hp;
     [SerializeField] private float maxHp;

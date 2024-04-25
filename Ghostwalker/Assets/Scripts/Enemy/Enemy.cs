@@ -10,9 +10,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float roamingDistanceMin = 1f;
     [SerializeField] private float roamingTimerMax = 4f;
 
-    [SerializeField] private bool isChasingEnemy = false;
-    [SerializeField] private float chasingDistance = 4f;
-    [SerializeField] private float chasingSpeedMult = 2f;
+    [SerializeField] private bool doChasingEnemy;
+    [SerializeField] private bool doRoamingEnemy;
+    [SerializeField] private bool doAttackingEnemy;
+
+    [SerializeField] private float chasingSpeed;
+    [SerializeField] private Transform PlayerPosition;
 
     private NavMeshAgent navMeshAgent;
     private State state;
@@ -22,17 +25,18 @@ public class Enemy : MonoBehaviour
 
     private State currentState;
 
-    private float roamingSpeed;
-    private float chasingSpeed;
 
     public float health;
 
-    public bool isRangerEnemy = false;
+    
+    public bool isRangerEnemy;
     private float attackingDistance = 1f;
     private float nextAttackTime;
     private float attackRate = 2;
-    private event EventHandler OnEnemyAttack;
-    public bool IsRunning => navMeshAgent.velocity == Vector3.zero;
+    private event EventHandler onEnemyAttack;
+
+    public bool IsRunning => !navMeshAgent.velocity.Equals(Vector2.zero);
+    
 
     private enum State
     {
@@ -50,12 +54,11 @@ public class Enemy : MonoBehaviour
         navMeshAgent.updateUpAxis = false;
         currentState = startingState;
 
-        roamingSpeed = navMeshAgent.speed;
-        chasingSpeed = navMeshAgent.speed * chasingSpeedMult;
     }
 
     private void Update()
     {
+        Debug.Log(navMeshAgent.velocity);
         StateHandler();
         if (health <= 0)
             Destroy(gameObject);
@@ -73,29 +76,72 @@ public class Enemy : MonoBehaviour
                     Roaming();
                     roamingTime = roamingTimerMax;
                 }
+
+                CheckCurrentState();
                 break;
             case State.Chasing:
                 ChasingTarget();
+                CheckCurrentState();
                 break;
             case State.Attacking:
+                AttackingTarget();
+                CheckCurrentState();
                 break;
             case State.Death:
+                CheckCurrentState();
                 break;
             default:
             case State.Idle:
+                CheckCurrentState();
                 break;
         }
     }
 
+    private void CheckCurrentState()
+    {
+        var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
+        var newState = State.Idle;
+
+        if (doChasingEnemy)
+            newState = State.Chasing;
+        if (doRoamingEnemy)
+            newState = State.Roaming;
+        if (doAttackingEnemy)
+            newState = State.Attacking;
+        
+        // if (!isRangerEnemy)
+        // {
+        //     if (distanceToPlayer <= attackingDistance)
+        //         newState = State.Attacking;
+        // }
+        currentState = newState;
+    }
+
+    private void AttackingTarget()
+    {
+        navMeshAgent.ResetPath();
+        if (!isRangerEnemy)
+        {
+            if (!(Time.time > nextAttackTime)) return;
+            nextAttackTime = Time.time + attackRate;
+            onEnemyAttack?.Invoke(this, EventArgs.Empty);
+        }
+        else
+            onEnemyAttack?.Invoke(this, EventArgs.Empty);
+    }
+
     private void ChasingTarget()
     {
-        if (Player.Instance)
-            navMeshAgent.SetDestination(Player.Instance.transform.position);
+        navMeshAgent.ResetPath();
+        navMeshAgent.speed = chasingSpeed;
+        navMeshAgent.SetDestination(PlayerPosition.position);
     }
 
 
     private void Roaming()
     {
+        roamingTime = 0f;
+        navMeshAgent.speed = chasingSpeed - 2;
         startingPosition = transform.position;
         roamPosition = GetRoamingPosition();
         navMeshAgent.SetDestination(roamPosition);

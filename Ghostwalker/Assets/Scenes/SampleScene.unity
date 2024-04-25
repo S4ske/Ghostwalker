@@ -19793,7 +19793,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1313779051752960404, guid: cc02e0fa7b621c343af896cc9ba56a94, type: 3}
       propertyPath: startingState
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313779051752960404, guid: cc02e0fa7b621c343af896cc9ba56a94, type: 3}
+      propertyPath: isChasingEnemy
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1313779051752960404, guid: cc02e0fa7b621c343af896cc9ba56a94, type: 3}
       propertyPath: chasingDistance
