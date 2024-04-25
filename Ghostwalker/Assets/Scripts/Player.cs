@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
             Flip();
     }
 
+    public void AddWeapon(GameObject weapon)
+    {
+        Instantiate(weapon, transform);
+    }
+
     private void FixedUpdate()
     {
         rb.velocity = movement.normalized * moveSpeed;
