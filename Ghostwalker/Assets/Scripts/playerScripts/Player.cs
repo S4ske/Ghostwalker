@@ -6,9 +6,10 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerParameter hpParameter;
     [SerializeField] private PlayerParameter armorParameter;
     [SerializeField] private PlayerParameter manaParameter;
+
+    private static Transform playerTransform;
+    public static Transform Instance => playerTransform;
     
-    private bool facingRight = true;
-    private Vector2 movement;
 
     private float hp;
     [SerializeField] private float maxHp;
@@ -17,11 +18,12 @@ public class Player : MonoBehaviour
     private float mana;
     [SerializeField] private float maxMana;
     
+    private bool facingRight = true;
+    private Vector2 movement;
 
     private Animator animator;
     private Rigidbody2D rb;
     
-    public Vector3 Instance => transform.position;
     
     private void Start()
     {
