@@ -1,35 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Gun : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform shotPoint;
-    [SerializeField] private Text helpMessage;
-    [SerializeField] private GameObject weapon;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.GetComponent<Player>())
-            helpMessage.text = "E - подобрать";
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.GetComponent<Player>() && Input.GetKey(KeyCode.E))
-        {
-            other.GetComponent<Player>().AddWeapon(weapon);
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        helpMessage.text = string.Empty;
-    }
 
     void Update()
     {
