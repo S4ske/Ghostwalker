@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6453318809774943127}
   - component: {fileID: 2540439529379654686}
+  - component: {fileID: 7106625646639382179}
   - component: {fileID: 7310409754711536154}
   - component: {fileID: 4101204142298432623}
   - component: {fileID: 5679158376995268310}
@@ -50,6 +51,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  hpParameter: {fileID: 0}
+  armorParameter: {fileID: 0}
+  manaParameter: {fileID: 0}
+  maxHp: 10
+  maxArmor: 20
+  maxMana: 200
+--- !u!114 &7106625646639382179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6564794358338436096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f3cd125b1946008d30acfd3dcc9ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  hotWeapon: 0
+  maxWeapons: 2
 --- !u!212 &7310409754711536154
 SpriteRenderer:
   m_ObjectHideFlags: 0

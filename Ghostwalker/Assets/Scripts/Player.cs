@@ -43,11 +43,6 @@ public class Player : MonoBehaviour
             Flip();
     }
 
-    public void AddWeapon(GameObject weapon)
-    {
-        Instantiate(weapon, transform);
-    }
-
     private void FixedUpdate()
     {
         rb.velocity = movement.normalized * moveSpeed;
@@ -66,5 +61,10 @@ public class Player : MonoBehaviour
         var scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
     }
 }

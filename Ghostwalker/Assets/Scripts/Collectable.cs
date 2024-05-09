@@ -1,8 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+enum CollectableType
+{
+    Weapon,
+    Potion
+}
+
 public class Collectable : MonoBehaviour
 {
+    [SerializeField] private CollectableType collectableType;
     [SerializeField] private Text helpMessage;
     [SerializeField] private GameObject weapon;
     
@@ -16,8 +23,11 @@ public class Collectable : MonoBehaviour
     {
         if (other.GetComponent<Player>() && other.isTrigger && Input.GetKey(KeyCode.E))
         {
-            other.GetComponent<Player>().AddWeapon(weapon);
-            Destroy(gameObject);
+            if (collectableType == CollectableType.Weapon)
+            {
+                other.GetComponent<Inventory>().AddWeapon(weapon);
+                Destroy(gameObject);
+            }
         }
     }
 

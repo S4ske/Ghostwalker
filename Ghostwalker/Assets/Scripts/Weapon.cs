@@ -5,7 +5,8 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform shotPoint;
-
+    
+    public GameObject collectable;
     private float timeBtwShots;
     public float startTimeBtwShots;
 
