@@ -66,5 +66,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hp -= damage;
+        if (hp > maxHp)
+            hp = maxHp;
     }
 }

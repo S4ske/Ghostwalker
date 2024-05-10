@@ -4,7 +4,7 @@ using UnityEngine.UI;
 enum CollectableType
 {
     Weapon,
-    Potion
+    HealingPotion
 }
 
 public class Collectable : MonoBehaviour
@@ -23,10 +23,16 @@ public class Collectable : MonoBehaviour
     {
         if (other.GetComponent<Player>() && other.isTrigger && Input.GetKey(KeyCode.E))
         {
-            if (collectableType == CollectableType.Weapon)
+            switch (collectableType)
             {
-                other.GetComponent<Inventory>().AddWeapon(weapon);
-                Destroy(gameObject);
+                case CollectableType.Weapon:
+                    other.GetComponent<Inventory>().AddWeapon(weapon);
+                    Destroy(gameObject);
+                    break;
+                case CollectableType.HealingPotion:
+                    other.GetComponent<Inventory>().AddPotion(new HealingPotion(other.GetComponent<Player>()));
+                    Destroy(gameObject);
+                    break;
             }
         }
     }
