@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4392950408277499796, guid: 1291da1cd369af14fb66c7a9882d51fc, type: 3}
   shotPoint: {fileID: 3995668612745964103}
+  weaponName: Magic Wand
   collectable: {fileID: 7804441857231242623, guid: 84189a72f02c24b48b0c163919463b51, type: 3}
   startTimeBtwShots: 1
 --- !u!61 &8734484833514519840

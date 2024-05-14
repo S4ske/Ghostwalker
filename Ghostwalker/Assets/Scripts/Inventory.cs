@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> weapons;
-    private List<IPotion> potions = new ();
-    [SerializeField] private int hotWeapon;
-    [SerializeField] private int maxWeapons = 2;
-    [SerializeField] private int maxPotions = 2;
+    public List<GameObject> weapons;
+    public int hotWeapon;
+    public int maxWeapons = 2;
 
     private void Update()
     {
@@ -22,12 +20,6 @@ public class Inventory : MonoBehaviour
         
         if (weapons.Count > 0 && Input.GetKeyDown(KeyCode.G) && hotWeapon < weapons.Count)
             RemoveWeapon(weapons[hotWeapon]);
-        
-        if (potions.Count > 0 && Input.GetKeyDown(KeyCode.H))
-        {
-            potions[0].Drink();
-            potions.RemoveAt(0);
-        }
     }
 
     private void SetHotWeapon(int newHotWeapon)
@@ -62,11 +54,5 @@ public class Inventory : MonoBehaviour
             hotWeapon = hotWeapon >= weapons.Count ? weapons.Count - 1 : hotWeapon;
             SetHotWeapon(hotWeapon);
         }
-    }
-
-    public void AddPotion(IPotion potion)
-    {
-        if (maxPotions > potions.Count)
-            potions.Add(potion);
     }
 }

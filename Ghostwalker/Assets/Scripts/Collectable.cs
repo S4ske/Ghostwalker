@@ -16,7 +16,7 @@ public class Collectable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Player>() && other.isTrigger)
-            helpMessage.text = "E - pick up";
+            helpMessage.text = collectableType == CollectableType.Weapon ? "E - Pick Up" : "E - Drink";
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -30,7 +30,7 @@ public class Collectable : MonoBehaviour
                     Destroy(gameObject);
                     break;
                 case CollectableType.HealingPotion:
-                    other.GetComponent<Inventory>().AddPotion(new HealingPotion(other.GetComponent<Player>()));
+                    other.GetComponent<Player>().TakeDamage(-5);
                     Destroy(gameObject);
                     break;
             }
