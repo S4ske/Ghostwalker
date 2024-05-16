@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 212760939180988240}
   - component: {fileID: 8734484833514519840}
   m_Layer: 0
-  m_Name: Staff
+  m_Name: MagicWand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

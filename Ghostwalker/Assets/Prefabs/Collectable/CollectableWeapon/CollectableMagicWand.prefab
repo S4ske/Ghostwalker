@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 6766752873873004828}
   - component: {fileID: 5664840368567615672}
   m_Layer: 0
-  m_Name: CollectableStaff
+  m_Name: CollectableMagicWand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
