@@ -3,7 +3,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
-    public float lifeTime;
     public float distance;
     public float damage;
     public LayerMask whatIsSolid;

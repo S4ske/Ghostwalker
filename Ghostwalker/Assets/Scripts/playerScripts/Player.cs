@@ -66,4 +66,11 @@ public class Player : MonoBehaviour
         scaler.x *= -1;
         transform.localScale = scaler;
     }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        if (hp > maxHp)
+            hp = maxHp;
+    }
 }
