@@ -4,7 +4,7 @@ using UnityEngine.UI;
 enum CollectableType
 {
     Weapon,
-    HealingPotion
+    ArmorPotion
 }
 
 public class Collectable : MonoBehaviour
@@ -29,7 +29,7 @@ public class Collectable : MonoBehaviour
                     other.GetComponent<Inventory>().AddWeapon(weapon);
                     Destroy(gameObject);
                     break;
-                case CollectableType.HealingPotion:
+                case CollectableType.ArmorPotion:
                     other.GetComponent<Player>().TakeDamage(-5);
                     Destroy(gameObject);
                     break;

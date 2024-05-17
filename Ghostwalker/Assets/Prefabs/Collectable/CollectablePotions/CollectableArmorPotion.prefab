@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 3183160201292421376}
   - component: {fileID: 1804197200307235354}
   m_Layer: 0
-  m_Name: CollectableHealingPotion
+  m_Name: CollectableArmorPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
