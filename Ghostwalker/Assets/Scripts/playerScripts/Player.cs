@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     
+    private Sword sword;
+    
     
     private void Start()
     {
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
         mana = maxMana;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        sword = GetComponentInChildren<Sword>();
     }
 
     private void Update()
@@ -45,6 +48,11 @@ public class Player : MonoBehaviour
 
         if (facingRight && movement.x < -1e-8 || !facingRight && movement.x > 1e-8)
             Flip();
+        
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            sword?.Attack();
+        }
     }
 
     private void FixedUpdate()
@@ -65,5 +73,10 @@ public class Player : MonoBehaviour
         var scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        hp -= damageAmount;
     }
 }

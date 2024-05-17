@@ -6,8 +6,6 @@ using GhostWalker.RandomDirecton;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private State startingState;
-    [SerializeField] private float roamingTimerMax = 4f;
-
     [SerializeField] private bool doChasingEnemy;
     [SerializeField] private bool doAttackingEnemy;
 
@@ -22,18 +20,24 @@ public class Enemy : MonoBehaviour
 
 
     public float health;
+    private float startHealht;
 
     
     public bool isRangerEnemy;
-    private float attackingDistance = 2f;
+    [SerializeField] private float attackingDistance = 5f;
     private float nextAttackTime;
     private float attackRate = 2;
     private event EventHandler onEnemyAttack;
 
     public bool IsRunning => !navMeshAgent.velocity.Equals(Vector2.zero);
-    public bool Attack => isRangerEnemy || attackingDistance >= Vector3.Distance(transform.position, PlayerPosition.position);
+    public bool Attack => isRangerEnemy || attackingDistance 
+        >= Vector3.Distance(transform.position, PlayerPosition.position);
     public bool Death => health <= 0;
-    public bool TakeHit => health <= 0;
+    public bool TakeHit = false;
+    
+    private EnemyVisual enemyVisual;
+
+    private EnemySword enemySword;
     
 
     private enum State
@@ -50,12 +54,21 @@ public class Enemy : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         currentState = startingState;
+        enemySword = GetComponent<EnemySword>();
+        startHealht = health;
     }
 
     private void Update()
     {
-        Debug.Log(navMeshAgent.velocity);
         StateHandler();
+        // if (startHealht != health)
+        // {
+        //     TakeHit = true;
+        //     startHealht = health;
+        // }
+        // if (Attack)
+        //     enemySword?.Attack();
+
         // if (health <= 0)
         //     Destroy(gameObject);
     }
@@ -113,6 +126,7 @@ public class Enemy : MonoBehaviour
             if (!(Time.time > nextAttackTime)) return;
             nextAttackTime = Time.time + attackRate;
             onEnemyAttack?.Invoke(this, EventArgs.Empty);
+            
         }
         else
             onEnemyAttack?.Invoke(this, EventArgs.Empty);
@@ -122,8 +136,20 @@ public class Enemy : MonoBehaviour
     {
         navMeshAgent.ResetPath();
         navMeshAgent.speed = chasingSpeed;
+        ChangFacingDirection(transform.position, PlayerPosition.position);
         navMeshAgent.SetDestination(PlayerPosition.position);
     }
 
-    public void TakeDamage(float damage) => health -= damage;
+    private void ChangFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
+    {
+        transform.rotation = sourcePosition.x > targetPosition.x 
+            ? Quaternion.Euler(0, -180, 0)
+            : Quaternion.Euler(0, 0, 0);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        // enemyVisual.EnemyHurt();
+    }
 }
