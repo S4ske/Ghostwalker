@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     public float health;
     private float startHealht;
+    private CapsuleCollider2D _capsuleCollider2D;
+    private BoxCollider2D _boxCollider2D;
 
     
     public bool isRangerEnemy;
@@ -56,6 +58,9 @@ public class Enemy : MonoBehaviour
         currentState = startingState;
         enemySword = GetComponent<EnemySword>();
         startHealht = health;
+
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
@@ -76,6 +81,12 @@ public class Enemy : MonoBehaviour
 
     private void StateHandler()
     {
+        if (health <= 0)
+        {
+            currentState = State.Idle;
+            _boxCollider2D.enabled = false;
+            _capsuleCollider2D.enabled = false;
+        }
         switch (currentState)
         {
             case State.Chasing:
@@ -98,6 +109,8 @@ public class Enemy : MonoBehaviour
 
     private void CheckCurrentState()
     {
+        if (health <= 0)
+            currentState = State.Death;
         var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
         
         var newState = State.Idle;

@@ -21,13 +21,8 @@ public class EnemySwordVisual : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool(CanAttack, enemy.Attack);
+        animator.SetBool(CanAttack, enemy.health > 0 && enemy.Attack);
     }
-
-    // public void PlayAttackAnimation()
-    // {
-    //     animator.SetTrigger(CanAttack);
-    // }
     
     public void TriggerEndAttackAnimation()
     {

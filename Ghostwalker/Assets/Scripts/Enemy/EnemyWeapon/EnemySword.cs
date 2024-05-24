@@ -9,14 +9,14 @@ public class EnemySword : MonoBehaviour
 
     [SerializeField] private float damageAmount;
 
-    private PolygonCollider2D polygonCollider2D;
+    private CircleCollider2D polygonCollider2D;
     [SerializeField] private Enemy enemy;
 
     // Start is called before the first frame update
     private void Awake()
     {
         enemySwordVisual = GetComponent<EnemySwordVisual>();
-        polygonCollider2D = GetComponent<PolygonCollider2D>();
+        polygonCollider2D = GetComponent<CircleCollider2D>();
 
     }
 

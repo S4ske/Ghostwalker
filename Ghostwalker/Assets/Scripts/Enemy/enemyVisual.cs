@@ -20,7 +20,7 @@ public class EnemyVisual : MonoBehaviour
     void Update()
     {
         animator.SetBool(IsRunning, enemy.IsRunning);
-        animator.SetBool(Attack, enemy.Attack);
+        animator.SetBool(Attack, enemy.health > 0 && enemy.Attack);
         animator.SetBool(IsDie, enemy.Death);
         if (enemy.TakeHit)
             EnemyHurt();
