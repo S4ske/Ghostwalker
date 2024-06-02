@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     {
         if (timeBtwShots <= 0)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(1))
             {
                 var shotPosition = shotPoint.position;
                 var difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shotPosition;

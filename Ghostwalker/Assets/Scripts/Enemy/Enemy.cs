@@ -6,12 +6,7 @@ using GhostWalker.RandomDirecton;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private State startingState;
-    [SerializeField] private float roamingDistanceMax = 7f;
-    [SerializeField] private float roamingDistanceMin = 1f;
-    [SerializeField] private float roamingTimerMax = 4f;
-
     [SerializeField] private bool doChasingEnemy;
-    [SerializeField] private bool doRoamingEnemy;
     [SerializeField] private bool doAttackingEnemy;
 
     [SerializeField] private float chasingSpeed;
@@ -19,29 +14,37 @@ public class Enemy : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private State state;
-    private float roamingTime;
-    private Vector3 roamPosition;
     private Vector3 startingPosition;
 
     private State currentState;
 
 
     public float health;
+    private float startHealht;
+    private CapsuleCollider2D _capsuleCollider2D;
+    private BoxCollider2D _boxCollider2D;
 
     
     public bool isRangerEnemy;
-    private float attackingDistance = 1f;
+    [SerializeField] private float attackingDistance = 5f;
     private float nextAttackTime;
     private float attackRate = 2;
     private event EventHandler onEnemyAttack;
 
     public bool IsRunning => !navMeshAgent.velocity.Equals(Vector2.zero);
+    public bool Attack => isRangerEnemy || attackingDistance 
+        >= Vector3.Distance(transform.position, PlayerPosition.position);
+    public bool Death => health <= 0;
+    public bool TakeHit = false;
+    
+    private EnemyVisual enemyVisual;
+
+    private EnemySword enemySword;
     
 
     private enum State
     {
         Idle,
-        Roaming,
         Chasing,
         Attacking,
         Death
@@ -53,32 +56,39 @@ public class Enemy : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         currentState = startingState;
+        enemySword = GetComponent<EnemySword>();
+        startHealht = health;
 
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
     {
-        Debug.Log(navMeshAgent.velocity);
         StateHandler();
-        if (health <= 0)
-            Destroy(gameObject);
+        // if (startHealht != health)
+        // {
+        //     TakeHit = true;
+        //     startHealht = health;
+        // }
+        // if (Attack)
+        //     enemySword?.Attack();
+
+        // if (health <= 0)
+        //     Destroy(gameObject);
     }
 
 
     private void StateHandler()
     {
+        if (health <= 0)
+        {
+            currentState = State.Idle;
+            _boxCollider2D.enabled = false;
+            _capsuleCollider2D.enabled = false;
+        }
         switch (currentState)
         {
-            case State.Roaming:
-                roamingTime -= Time.deltaTime;
-                if (roamingTime < 0)
-                {
-                    Roaming();
-                    roamingTime = roamingTimerMax;
-                }
-
-                CheckCurrentState();
-                break;
             case State.Chasing:
                 ChasingTarget();
                 CheckCurrentState();
@@ -99,21 +109,25 @@ public class Enemy : MonoBehaviour
 
     private void CheckCurrentState()
     {
+        if (health <= 0)
+            currentState = State.Death;
         var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
+        
         var newState = State.Idle;
 
         if (doChasingEnemy)
             newState = State.Chasing;
-        if (doRoamingEnemy)
-            newState = State.Roaming;
         if (doAttackingEnemy)
             newState = State.Attacking;
-        
-        // if (!isRangerEnemy)
-        // {
-        //     if (distanceToPlayer <= attackingDistance)
-        //         newState = State.Attacking;
-        // }
+
+        if (isRangerEnemy)
+            newState = State.Attacking;
+        else
+        {
+            if (distanceToPlayer <= attackingDistance)
+                newState = State.Attacking;
+        }
+
         currentState = newState;
     }
 
@@ -125,6 +139,7 @@ public class Enemy : MonoBehaviour
             if (!(Time.time > nextAttackTime)) return;
             nextAttackTime = Time.time + attackRate;
             onEnemyAttack?.Invoke(this, EventArgs.Empty);
+            
         }
         else
             onEnemyAttack?.Invoke(this, EventArgs.Empty);
@@ -134,25 +149,20 @@ public class Enemy : MonoBehaviour
     {
         navMeshAgent.ResetPath();
         navMeshAgent.speed = chasingSpeed;
+        ChangFacingDirection(transform.position, PlayerPosition.position);
         navMeshAgent.SetDestination(PlayerPosition.position);
     }
 
-
-    private void Roaming()
+    private void ChangFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
     {
-        roamingTime = 0f;
-        navMeshAgent.speed = chasingSpeed - 2;
-        startingPosition = transform.position;
-        roamPosition = GetRoamingPosition();
-        navMeshAgent.SetDestination(roamPosition);
+        transform.rotation = sourcePosition.x > targetPosition.x 
+            ? Quaternion.Euler(0, -180, 0)
+            : Quaternion.Euler(0, 0, 0);
     }
 
-
-    private Vector3 GetRoamingPosition()
+    public void TakeDamage(float damage)
     {
-        return startingPosition + RandomDirection.GetRandomDirection() *
-            UnityEngine.Random.Range(roamingDistanceMin, roamingDistanceMax);
+        health -= damage;
+        // enemyVisual.EnemyHurt();
     }
-
-    public void TakeDamage(float damage) => health -= damage;
 }
