@@ -111,12 +111,14 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
             currentState = State.Death;
+        
         var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
         
         var newState = State.Idle;
 
         if (doChasingEnemy)
             newState = State.Chasing;
+        
         if (doAttackingEnemy)
             newState = State.Attacking;
 

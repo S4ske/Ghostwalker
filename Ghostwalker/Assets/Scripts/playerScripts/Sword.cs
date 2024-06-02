@@ -40,5 +40,10 @@ public class Sword : MonoBehaviour
         {
             enemy.TakeDamage(damageAmount);
         }
+        
+        if (collision.transform.TryGetComponent(out Boss boss))
+        {
+            boss.TakeDamage(damageAmount);
+        }
     }
 }
