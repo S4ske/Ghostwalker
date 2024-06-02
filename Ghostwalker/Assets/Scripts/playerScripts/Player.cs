@@ -6,8 +6,11 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerParameter hpParameter;
     [SerializeField] private PlayerParameter armorParameter;
     [SerializeField] private PlayerParameter manaParameter;
+    public bool Listened;
 
     public static Transform Instance { get; }
+
+    public bool WithMantle;
 
 
     private float hp;
@@ -40,6 +43,9 @@ public class Player : MonoBehaviour
     {
         UpdateParameters();
         
+        if (!Listened)
+            return;
+        
         movement = new Vector2(
             (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0),
             (Input.GetKey(KeyCode.S) ? -1 : 0) + (Input.GetKey(KeyCode.W) ? 1 : 0));
@@ -57,6 +63,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!Listened)
+            return;
         rb.velocity = movement.normalized * moveSpeed;
     }
 
