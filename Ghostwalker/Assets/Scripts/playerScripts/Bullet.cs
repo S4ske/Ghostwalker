@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     
     void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, distance, whatIsSolid);
+        var hitInfo = Physics2D.Raycast(transform.position, transform.right, distance, whatIsSolid);
         if (hitInfo.collider is not null)
         {
             if (hitInfo.collider.CompareTag("Enemy"))
@@ -17,6 +17,10 @@ public class Bullet : MonoBehaviour
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
             }
 
+            if (hitInfo.collider.CompareTag("Boss"))
+            {
+                hitInfo.collider.GetComponent<Boss>().TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
         transform.Translate(Vector2.right * (speed * Time.deltaTime));
