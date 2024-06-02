@@ -12,12 +12,10 @@ public class EnemySword : MonoBehaviour
     private CircleCollider2D polygonCollider2D;
     [SerializeField] private Enemy enemy;
 
-    // Start is called before the first frame update
     private void Awake()
     {
         enemySwordVisual = GetComponent<EnemySwordVisual>();
         polygonCollider2D = GetComponent<CircleCollider2D>();
-
     }
 
     private void Update()
@@ -25,12 +23,6 @@ public class EnemySword : MonoBehaviour
         if (!enemy.Attack)
             EnemyAttackColliderTurnOff();
     }
-
-    // public void Attack()
-    // {
-    //     EnemyAttackColliderTurnOn();
-    // }
-
     public void EnemyAttackColliderTurnOn()
     {
         polygonCollider2D.enabled = true;
