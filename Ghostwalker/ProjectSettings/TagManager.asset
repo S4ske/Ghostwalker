@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coins
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Solid
-  - 
-  - 
+  - Boss
+  - Projectile
   - 
   - 
   - 

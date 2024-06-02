@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] private PlayerParameter hpParameter;
     [SerializeField] private PlayerParameter armorParameter;
     [SerializeField] private PlayerParameter manaParameter;
@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         {
             sword?.Attack();
         }
+        
     }
 
     private void FixedUpdate()
