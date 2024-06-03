@@ -47843,7 +47843,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.57, y: 24.55, z: 0}
+  m_LocalPosition: {x: -45, y: 25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47862,7 +47862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 563676155}
-  cameraSpeed: 1
+  cameraSpeed: 3
 --- !u!4 &563676155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6453318809774943127, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
@@ -87672,11 +87672,11 @@ PrefabInstance:
       objectReference: {fileID: 138795490}
     - target: {fileID: 6453318809774943127, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45.39
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 6453318809774943127, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.73
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6453318809774943127, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
       propertyPath: m_LocalPosition.z
