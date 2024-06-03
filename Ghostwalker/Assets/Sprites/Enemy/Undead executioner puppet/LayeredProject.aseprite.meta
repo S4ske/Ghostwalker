@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: LayeredProject_Frame_0
     originalName: 
-    pivot: {x: 0.35555556, y: -0.27419356}
+    pivot: {x: 0.32885623, y: 0.5445397}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 78, y: 4}
   - name: LayeredProject_Frame_1
     originalName: 
-    pivot: {x: 0.35555556, y: -0.31666666}
+    pivot: {x: 0.2687839, y: 0.50933355}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 78, y: 144}
   - name: LayeredProject_Frame_2
     originalName: 
-    pivot: {x: 0.35555556, y: -0.31666666}
+    pivot: {x: 0.31550667, y: 0.54938215}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 131, y: 4}
   - name: LayeredProject_Frame_3
     originalName: 
-    pivot: {x: 0.35555556, y: -0.3859649}
+    pivot: {x: 0.28213298, y: 0.49931765}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 131, y: 72}
   - name: LayeredProject_Frame_4
     originalName: 
-    pivot: {x: 0.35555556, y: -0.27419356}
+    pivot: {x: 0.28213313, y: 0.53969526}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 78, y: 74}
   - name: LayeredProject_Frame_5
     originalName: 
-    pivot: {x: 0.6451613, y: -0.28787878}
+    pivot: {x: 0.44168878, y: 0.49033633}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 131, y: 137}
   - name: LayeredProject_Frame_6
     originalName: 
-    pivot: {x: 0.30303028, y: -0.23943663}
+    pivot: {x: 0.25752053, y: 0.522049}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: LayeredProject_Frame_7
     originalName: 
-    pivot: {x: 0.27586207, y: -0.3148148}
+    pivot: {x: 0.2137179, y: 0.6307749}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 83}
   - name: LayeredProject_Frame_8
     originalName: 
-    pivot: {x: 0.30188677, y: -0.3148148}
+    pivot: {x: 0.23387973, y: 0.6418994}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
