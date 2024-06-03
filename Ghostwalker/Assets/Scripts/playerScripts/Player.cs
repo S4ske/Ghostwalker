@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -103,6 +104,8 @@ public class Player : MonoBehaviour
         if (armor < 0)
             armor = 0;
         hp -= hpDamage;
+        if (hp <= 0)
+            SceneManager.LoadScene("GameOver");
     }
 
     public void GetArmor(int heal)

@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private State startingState;
     [SerializeField] private bool doChasingEnemy;
     [SerializeField] private bool doAttackingEnemy;
+    public GameObject[] teammates;
 
     [SerializeField] private float chasingSpeed;
     [SerializeField] public Transform PlayerPosition;
@@ -104,8 +105,12 @@ public class Enemy : MonoBehaviour
         
         var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
 
-        if (distanceToPlayer <= attackingDistance + 6)
+        if (distanceToPlayer <= attackingDistance + 4)
+        {
             doChasingEnemy = true;
+            foreach (var mate in teammates)
+                mate.GetComponent<Enemy>().doChasingEnemy = true;
+        }
         
         var newState = State.Idle;
 
