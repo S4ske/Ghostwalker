@@ -108,7 +108,10 @@ public class Enemy : MonoBehaviour
     private void CheckCurrentState()
     {
         if (health <= 0)
+        {
             currentState = State.Death;
+            return;
+        }
         
         var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
 
