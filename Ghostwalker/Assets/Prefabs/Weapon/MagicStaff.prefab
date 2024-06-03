@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7220386744764853945
+--- !u!1 &5349499168629422193
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2412007494289065245}
-  - component: {fileID: 2296166115137846158}
-  - component: {fileID: 7990817446883192845}
-  - component: {fileID: 661637062704978375}
+  - component: {fileID: 2845699800939516442}
+  - component: {fileID: 8003321763157429214}
+  - component: {fileID: 3797882943641008228}
+  - component: {fileID: 2980221819168594234}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: MagicStaff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2412007494289065245
+--- !u!4 &2845699800939516442
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220386744764853945}
+  m_GameObject: {fileID: 5349499168629422193}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0.5, y: -0.35, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.35, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6228398672608281084}
+  - {fileID: 2963158799454616938}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
---- !u!212 &2296166115137846158
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8003321763157429214
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220386744764853945}
+  m_GameObject: {fileID: 5349499168629422193}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: b08b8fb90dd87984d8f4ea524f1876ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44e6dc0315135b643b1a67786bf3942a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,31 +87,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7990817446883192845
+--- !u!114 &3797882943641008228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220386744764853945}
+  m_GameObject: {fileID: 5349499168629422193}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 796f0b3726c15174f84ce386c90a29a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6655456129648444239, guid: 7d371e2986d93b744a6c1e9ed2dbc7b5, type: 3}
-  shotPoint: {fileID: 6228398672608281084}
-  manaCost: 0
-  weaponName: Sword
-  collectable: {fileID: 4832363627916923130, guid: f7ccf48f4191a4c4488e9faba4bc47b0, type: 3}
-  startTimeBtwShots: 1
---- !u!61 &661637062704978375
+  bullet: {fileID: 4270668745882443878, guid: ec6704bf86dd9b14b9384566bb74c549, type: 3}
+  shotPoint: {fileID: 2963158799454616938}
+  manaCost: 7
+  weaponName: Magic Staff
+  collectable: {fileID: 410132654381467226, guid: 29e488ff55db25541ade65ebd64d700d, type: 3}
+  startTimeBtwShots: 0.5
+--- !u!61 &2980221819168594234
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220386744764853945}
+  m_GameObject: {fileID: 5349499168629422193}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27631578, y: 1}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2307693, y: 1.2307693}
   m_EdgeRadius: 0
---- !u!1 &7696957842609665071
+--- !u!1 &8150645231173013880
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6228398672608281084}
+  - component: {fileID: 2963158799454616938}
   m_Layer: 0
   m_Name: ShotPoint
   m_TagString: Untagged
@@ -166,18 +166,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6228398672608281084
+--- !u!4 &2963158799454616938
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7696957842609665071}
+  m_GameObject: {fileID: 8150645231173013880}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2412007494289065245}
+  m_Father: {fileID: 2845699800939516442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
