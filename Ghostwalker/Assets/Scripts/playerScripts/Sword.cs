@@ -41,9 +41,9 @@ public class Sword : MonoBehaviour
             enemy.TakeDamage(damageAmount);
         }
         
-        if (collision.transform.TryGetComponent(out Boss boss))
+        if (collision.CompareTag("Boss"))
         {
-            boss.TakeDamage(damageAmount);
+            collision.GetComponent<Boss>().TakeDamage(damageAmount);
         }
     }
 }

@@ -20,5 +20,9 @@ public class SwordBullet : Bullet
         {
             other.GetComponent<Enemy>().TakeDamage(damage * (Time.deltaTime / existingTime));
         }
+        if (other.CompareTag("Boss"))
+        {
+            other.GetComponent<Boss>().TakeDamage(damage * (Time.deltaTime / existingTime));
+        }
     }
 }

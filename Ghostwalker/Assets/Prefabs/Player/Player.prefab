@@ -53,7 +53,7 @@ MonoBehaviour:
   hpParameter: {fileID: 0}
   armorParameter: {fileID: 0}
   manaParameter: {fileID: 0}
-  Listened: 0
+  Listened: 1
   WithMantle: 0
   maxHp: 10
   maxArmor: 20

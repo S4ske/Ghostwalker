@@ -26,7 +26,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject projectilePrefabFire;
     [SerializeField] private GameObject projectilePrefabIce;
     [SerializeField] private Transform[] firePoints;
-    [SerializeField] private float attackRate = 1f;
+    [SerializeField] private float attackRate;
     private float nextAttackTime;
 
     private float currentAngle; 
@@ -65,6 +65,7 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Animator.SetBool("IsDie", true);
@@ -104,6 +105,13 @@ public class Boss : MonoBehaviour
         {
             UseLaserAbility();
             abilityTimer = abilityCooldown;
+        }
+
+        if (currentHealth < maxHealth / 2)
+        {
+            navMeshAgent.speed += 5;
+            attackRate = (float)0.2;
+            abilityCooldown = 7;
         }
     }
 
@@ -170,8 +178,8 @@ public class Boss : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
+        Debug.Log(currentHealth);
         currentHealth -= damage;
         healthSlider.value = currentHealth;
-        
     }
 }
