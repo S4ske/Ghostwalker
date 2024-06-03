@@ -66,6 +66,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            currentState = State.Attacking;
+            navMeshAgent.SetDestination(transform.position);
+        }
         StateHandler();
     }
 
