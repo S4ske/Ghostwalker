@@ -29,17 +29,19 @@ public class Inventory : MonoBehaviour
         weapons[hotWeapon].SetActive(true);
     }
 
-    public bool AddWeapon(GameObject weapon)
+    public void AddWeapon(GameObject weapon)
     {
         if (weapons.Count < maxWeapons)
         {
             GameObject newWeapon = Instantiate(weapon, transform);
             weapons.Add(newWeapon);
             SetHotWeapon(weapons.Count - 1);
-            return true;
         }
-
-        return false;
+        else
+        {
+            RemoveWeapon(weapons[hotWeapon]);
+            AddWeapon(weapon);
+        }
     }
 
     public void RemoveWeapon(GameObject weapon)

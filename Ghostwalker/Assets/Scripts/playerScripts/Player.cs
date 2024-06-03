@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
     public static Transform Instance { get; }
 
     public bool WithMantle;
-
+    public bool pressedE;
+    private float eCd = 0.1f;
+    public float currentECd;
 
     private float hp;
     [SerializeField] private float maxHp;
@@ -39,6 +41,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            pressedE = true;
+            currentECd = eCd;
+        }
+
+        if (pressedE)
+        {
+            currentECd -= Time.deltaTime;
+            if (currentECd <= 0)
+                pressedE = false;
+        }
         UpdateParameters();
         
         if (!Listened)
