@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3644431020056591418, guid: c225d68f806f1ba4bb8df97c1ae0fc87, type: 3}
   shotPoint: {fileID: 1824250831995890697}
+  manaCost: 2
   weaponName: Terra Staff
   collectable: {fileID: 1525656059851718034, guid: 67a74a1c71888a94398ef548b3d60105, type: 3}
   startTimeBtwShots: 0.5

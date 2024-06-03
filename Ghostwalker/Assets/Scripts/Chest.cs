@@ -12,7 +12,7 @@ public class Chest : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && other.isTrigger)
-            text.text = "E - open chest";
+            text.text = "F - open chest";
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -21,8 +21,8 @@ public class Chest : MonoBehaviour
         {
             lock (text)
             {
-                text.text = "E - open chest";
-                var isOpened = Input.GetKey(KeyCode.E);
+                text.text = "F - open chest";
+                var isOpened = Input.GetKey(KeyCode.F);
                 if (isOpened)
                 {
                     Destroy(gameObject);
