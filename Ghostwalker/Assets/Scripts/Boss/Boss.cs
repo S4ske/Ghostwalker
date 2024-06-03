@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private int maxHealth;
     private float currentHealth;
     [SerializeField] private int speed;
+    public Transform[] spawnPoints;
     
     [SerializeField] private GameObject laserPrefab;
 
@@ -107,8 +108,12 @@ public class Boss : MonoBehaviour
         {
             UseLaserAbility();
             abilityTimer = abilityCooldown;
-            var enemyClone = Instantiate(enemy, new Vector3(0, 0, 0), quaternion.identity);
-            enemyClone.GetComponent<Enemy>().PlayerPosition = player.transform;
+            var random = new System.Random();
+            var enemyClone = Instantiate(enemy, spawnPoints[random.Next(spawnPoints.Length)].position,
+                quaternion.identity);
+            var enemyClass = enemyClone.GetComponent<Enemy>();
+            enemyClass.PlayerPosition = player.transform;
+            enemyClass.doChasingEnemy = true;
         }
 
         if (currentHealth < maxHealth / 2)

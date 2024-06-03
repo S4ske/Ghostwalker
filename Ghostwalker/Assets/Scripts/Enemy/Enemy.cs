@@ -6,7 +6,7 @@ using GhostWalker.RandomDirecton;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private State startingState;
-    [SerializeField] private bool doChasingEnemy;
+    [SerializeField] public bool doChasingEnemy;
     [SerializeField] private bool doAttackingEnemy;
     public GameObject[] teammates;
 
