@@ -86711,7 +86711,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09836578, y: -0.14215088}
+  m_Offset: {x: -0.09836578, y: -0.5783901}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -86722,7 +86722,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.8403015, y: 5.0377655}
+  m_Size: {x: 5.8403015, y: 4.165287}
   m_EdgeRadius: 0
 --- !u!61 &1533916293
 BoxCollider2D:
@@ -86926,7 +86926,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.4
+  m_VoxelSize: 0.29999998
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: d26f3ec7e8577b3458552b1467c810cb, type: 2}
