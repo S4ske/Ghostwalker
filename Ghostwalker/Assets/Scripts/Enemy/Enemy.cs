@@ -66,11 +66,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            currentState = State.Death;
-            return;
-        }
         StateHandler();
     }
 
@@ -162,9 +157,6 @@ public class Enemy : MonoBehaviour
 
     private void ChasingTarget()
     {
-        if (currentState == State.Death)
-            return;
-
         navMeshAgent.ResetPath();
         navMeshAgent.speed = chasingSpeed;
         ChangFacingDirection(transform.position, PlayerPosition.position);

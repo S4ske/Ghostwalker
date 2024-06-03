@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 30
   moveSpeed: 5
-  moveDistance: 0.5
+  moveDistance: 0.3
   damage: 3
 --- !u!50 &7279386721290296274
 Rigidbody2D:
