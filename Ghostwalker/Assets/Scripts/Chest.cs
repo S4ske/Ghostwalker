@@ -5,8 +5,7 @@ using Random = System.Random;
 public class Chest : MonoBehaviour
 {
     [SerializeField] private WeaponsPool weaponsPool;
-    [SerializeField] private GameObject armorPotion;
-    [SerializeField] private GameObject manaPotion;
+    [SerializeField] private GameObject[] potions;
     [SerializeField] private Text text;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,10 +26,10 @@ public class Chest : MonoBehaviour
                 Destroy(gameObject);
                 var random = new Random();
                 var pos = transform.position;
-                Instantiate(weaponsPool.PeekRandomWeapon(),
-                        new Vector3(pos.x, pos.y + 1f, 1), Quaternion.identity);
-                Instantiate(armorPotion, new Vector3(pos.x - 2, pos.y - 1f, 1), Quaternion.identity);
-                Instantiate(manaPotion, new Vector3(pos.x + 2, pos.y - 1f, 1), Quaternion.identity);
+                Instantiate(weaponsPool.PeekRandomWeapon(), 
+                    new Vector3(pos.x - 2, pos.y, 1), Quaternion.identity);
+                Instantiate(potions[random.Next(potions.Length)], 
+                    new Vector3(pos.x + 2, pos.y, 1), Quaternion.identity);
             }
         }
     }

@@ -103,7 +103,7 @@ MonoBehaviour:
   damage: 1
   whatIsSolid:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   existingTime: 0.1
 --- !u!60 &5003027684983395049
 PolygonCollider2D:
