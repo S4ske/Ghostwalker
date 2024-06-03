@@ -125,7 +125,7 @@ public class Boss : MonoBehaviour
 
         if (currentHealth < maxHealth / 2)
         {
-            navMeshAgent.speed += 5;
+            navMeshAgent.speed += 3;
             attackRate = (float)0.2;
             abilityCooldown = 15;
             _roamimgTimerMax = 2;
