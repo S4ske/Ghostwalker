@@ -13,6 +13,7 @@ public class Collectable : MonoBehaviour
     [SerializeField] private CollectableType collectableType;
     [SerializeField] private Text helpMessage;
     [SerializeField] private GameObject weapon;
+    [SerializeField] private PlayerData playerData;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,6 +34,7 @@ public class Collectable : MonoBehaviour
                 {
                     case CollectableType.Weapon:
                         other.GetComponent<Inventory>().AddWeapon(weapon);
+                        PlayerData.Instance.weapons.Add(weapon.name);
                         Destroy(gameObject);
                         break;
                     case CollectableType.ArmorPotion:

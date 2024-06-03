@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,7 +19,10 @@ public class TeleportToBoss : MonoBehaviour
         {
             var player = other.GetComponent<Player>();
             if (player.pressedE)
+            {
                 SceneManager.LoadScene("BossFight");
+                var playerWeapons = PlayerData.Instance.weapons;
+            }
         }
     }
 
