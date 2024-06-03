@@ -97,6 +97,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
+        if (!Listened)
+            return;
         var hpDamage = damageAmount - armor;
         if (hpDamage < 0)
             hpDamage = 0;
