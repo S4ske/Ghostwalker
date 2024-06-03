@@ -71,6 +71,7 @@ public class Boss : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            navMeshAgent.speed = 0;
             Animator.SetBool("IsDie", true);
             return;
         }
@@ -122,6 +123,7 @@ public class Boss : MonoBehaviour
             attackRate = (float)0.2;
             abilityCooldown = 15;
             _roamimgTimerMax = 2;
+            Animator.SetBool("IsAngry", true);
         }
     }
 
@@ -135,12 +137,12 @@ public class Boss : MonoBehaviour
 
     private Vector3 GetRoamingPosition()
     {
-        return _startingPosition + GetRandomDir() * Random.Range(_roamimgDistanceMin, _roamingDistanceMax);
-    }
+        var directionToPlayer = (player.transform.position - transform.position).normalized;
 
-    private static Vector3 GetRandomDir()
-    {
-        return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        var randomAngle = Random.Range(-60, 60) * Mathf.Deg2Rad;
+        var randomDirection = Quaternion.Euler(0, 0, randomAngle) * directionToPlayer;
+
+        return transform.position + randomDirection * Random.Range(_roamimgDistanceMin, _roamingDistanceMax);
     }
 
     private void Attack()

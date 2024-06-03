@@ -123,9 +123,9 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: main project_Frame_0
     originalName: 
-    pivot: {x: 0.35555556, y: -0.27419356}
+    pivot: {x: 0.30215794, y: 0.53969586}
     alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 0, z: 16, w: 0}
     rect:
       serializedVersion: 2
       x: 355
