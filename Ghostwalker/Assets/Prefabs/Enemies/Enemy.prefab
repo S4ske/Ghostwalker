@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835aa0ed90511c2498d8e8e32bbccada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: 0
-  doChasingEnemy: 0
+  startingState: 1
+  doChasingEnemy: 1
   doAttackingEnemy: 0
   chasingSpeed: 3
   PlayerPosition: {fileID: 0}
@@ -499,7 +499,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8226250912256866716}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.72
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

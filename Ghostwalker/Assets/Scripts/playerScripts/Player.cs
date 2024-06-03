@@ -17,13 +17,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxHp;
     private float armor;
     [SerializeField] private float maxArmor;
-    private float mana;
+    public float mana;
     [SerializeField] private float maxMana;
     
     private bool facingRight = true;
     private Vector2 movement;
-
-    private Animator animator;
+    
     private Rigidbody2D rb;
     
     private Sword sword;
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour
         armor = maxArmor;
         mana = maxMana;
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         sword = GetComponentInChildren<Sword>();
     }
 
@@ -49,8 +47,6 @@ public class Player : MonoBehaviour
         movement = new Vector2(
             (Input.GetKey(KeyCode.A) ? -1 : 0) + (Input.GetKey(KeyCode.D) ? 1 : 0),
             (Input.GetKey(KeyCode.S) ? -1 : 0) + (Input.GetKey(KeyCode.W) ? 1 : 0));
-        
-        animator.SetBool("isRunning", !movement.Equals(Vector2.zero));
 
         if (facingRight && movement.x < -1e-8 || !facingRight && movement.x > 1e-8)
             Flip();
@@ -86,6 +82,26 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        hp -= damageAmount;
+        var hpDamage = damageAmount - armor;
+        if (hpDamage < 0)
+            hpDamage = 0;
+        armor -= damageAmount;
+        if (armor < 0)
+            armor = 0;
+        hp -= hpDamage;
+    }
+
+    public void GetArmor(int heal)
+    {
+        armor += heal;
+        if (armor > maxArmor)
+            armor = maxArmor;
+    }
+    
+    public void GetMana(int heal)
+    {
+        mana += heal;
+        if (mana > maxMana)
+            mana = maxMana;
     }
 }

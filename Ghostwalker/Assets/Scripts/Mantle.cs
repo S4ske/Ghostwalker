@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Text;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,72 +16,33 @@ public class Mantle : MonoBehaviour
         "Она обладает сверх способностями, поэтому надень ее. Не стесняйся.",
         "Давай вместе попробуем выбраться из этого подземелья!"
     };
-    
-    public bool isSpeaking;
+
+    public Sprite idleWithMantle;
     [SerializeField] private Player player;
     private bool enterPressed;
-    private StringBuilder phrase = new ();
     [SerializeField] private Text text;
-    private IEnumerator enumerator;
     private int i;
 
     private void Start()
     {
-        enumerator = TextCoroutine(phrases[0]);
+        text.text = phrases[0];
     }
-    
+
     void Update()
     {
-        if (isSpeaking)
+        if (i < phrases.Length && Input.GetKeyDown(KeyCode.Return))
         {
-            if (enumerator.MoveNext())
-            {
-                if (Input.GetKeyDown(KeyCode.Return) || enterPressed)
-                {
-                    phrase.Append(enumerator.Current);
-                    while (enumerator.MoveNext())
-                    {
-                        phrase.Append(enumerator.Current);
-                    }
-
-                    text.text = phrase.ToString();
-                }
-                else
-                {
-                    phrase.Append(enumerator.Current);
-                    text.text = phrase.ToString();
-                    Thread.Sleep(100);
-                }
-            }
-            else
-            {
-                isSpeaking = false;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Return) || enterPressed)
-        {
-            if (i + 1 == phrases.Length)
+            if (i == phrases.Length - 1)
             {
                 player.Listened = true;
                 text.text = "";
+                i = phrases.Length;
             }
             else
             {
                 i++;
-                isSpeaking = true;
-                enumerator = TextCoroutine(phrases[i]);
-                phrase = new StringBuilder();
+                text.text = phrases[i];
             }
-        }
-
-        enterPressed = false;
-    }
-    
-    private IEnumerator TextCoroutine(string text)
-    {
-        foreach(var c in text)
-        {
-            yield return c;
         }
     }
 
@@ -98,6 +56,7 @@ public class Mantle : MonoBehaviour
     {
         if (other.GetComponent<Player>() && other.isTrigger && Input.GetKey(KeyCode.E))
         {
+            other.GetComponent<SpriteRenderer>().sprite = idleWithMantle;
             other.GetComponent<Player>().WithMantle = true;
             Destroy(gameObject);
         }
