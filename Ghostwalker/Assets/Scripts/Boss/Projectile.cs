@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
         var hitInfo = Physics2D.Raycast(transform.position, transform.right, distance, whatIsSolid);
         if (hitInfo.collider is not null)
             Destroy(gameObject);
-        
+    
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Player>().TakeDamage(damage);
-            if (fireType.name == "fireball-blue-tail-big")
+            if (fireType.name == "fireball-blue-tail-small")
                 other.GetComponent<Player>().moveSpeed = 3;
             Destroy(gameObject); 
         }

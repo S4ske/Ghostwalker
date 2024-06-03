@@ -113,6 +113,9 @@ public class Enemy : MonoBehaviour
             currentState = State.Death;
         
         var distanceToPlayer = Vector3.Distance(transform.position, PlayerPosition.position);
+
+        if (distanceToPlayer <= attackingDistance + 6)
+            doChasingEnemy = true;
         
         var newState = State.Idle;
 
