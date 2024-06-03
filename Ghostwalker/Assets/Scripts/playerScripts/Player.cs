@@ -70,7 +70,9 @@ public class Player : MonoBehaviour
         {
             sword?.Attack();
         }
-        
+
+        if (!Listened)
+            movement = Vector2.zero;
     }
 
     private void FixedUpdate()
