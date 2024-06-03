@@ -104,7 +104,7 @@ MonoBehaviour:
   manaCost: 3
   weaponName: Magic Wand
   collectable: {fileID: 7804441857231242623, guid: 84189a72f02c24b48b0c163919463b51, type: 3}
-  startTimeBtwShots: 1
+  startTimeBtwShots: 0.5
 --- !u!61 &8734484833514519840
 BoxCollider2D:
   m_ObjectHideFlags: 0

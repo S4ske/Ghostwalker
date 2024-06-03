@@ -377,11 +377,13 @@ MonoBehaviour:
   startingState: 0
   doChasingEnemy: 0
   doAttackingEnemy: 0
+  teammates: []
   chasingSpeed: 3
   PlayerPosition: {fileID: 0}
   health: 10
   isRangerEnemy: 0
-  attackingDistance: 3.5
+  attackingDistance: 3
+  potion: {fileID: 9037803733001436705, guid: 6ad2ea50aca608542b3d4f158d0a684b, type: 3}
   TakeHit: 0
 --- !u!50 &7426029199415095786
 Rigidbody2D:

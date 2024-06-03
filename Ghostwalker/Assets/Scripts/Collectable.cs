@@ -42,7 +42,7 @@ public class Collectable : MonoBehaviour
                         Destroy(gameObject);
                         break;
                     case CollectableType.ManaPotion:
-                        other.GetComponent<Player>().GetMana(25);
+                        other.GetComponent<Player>().GetMana(50);
                         Destroy(gameObject);
                         break;
                 }

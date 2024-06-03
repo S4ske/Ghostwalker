@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 8748015858277661625, guid: 1de6a38bc2063eb47ad6278548bcabc1, type: 3}
   shotPoint: {fileID: 2226403858437524193}
-  manaCost: 9
+  manaCost: 50
   weaponName: Fire Staff
   collectable: {fileID: 8015548734455200839, guid: 219696a0194233c47bae7081ae692ed2, type: 3}
   startTimeBtwShots: 2

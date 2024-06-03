@@ -44,7 +44,7 @@ public class Boss : MonoBehaviour
     
     [SerializeField] private Slider healthSlider;
     
-    private float abilityCooldown = 10f;
+    private float abilityCooldown = 20f;
     private float abilityTimer;
 
     private Animator Animator;
@@ -120,7 +120,7 @@ public class Boss : MonoBehaviour
         {
             navMeshAgent.speed += 5;
             attackRate = (float)0.2;
-            abilityCooldown = 7;
+            abilityCooldown = 15;
             _roamimgTimerMax = 2;
         }
     }

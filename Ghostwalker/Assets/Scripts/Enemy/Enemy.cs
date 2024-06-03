@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-using GhostWalker.RandomDirecton;
 
 public class Enemy : MonoBehaviour
 {
@@ -31,7 +30,7 @@ public class Enemy : MonoBehaviour
     private float nextAttackTime;
     private float attackRate = 2;
     private event EventHandler onEnemyAttack;
-
+    public GameObject potion;
     public bool IsRunning => !navMeshAgent.velocity.Equals(Vector2.zero);
     public bool Attack => isRangerEnemy || attackingDistance 
         >= Vector3.Distance(transform.position, PlayerPosition.position);
@@ -39,6 +38,7 @@ public class Enemy : MonoBehaviour
     public bool TakeHit = false;
     
     private EnemyVisual enemyVisual;
+    private bool firstDie = true;
 
     private EnemySword enemySword;
     
@@ -77,6 +77,13 @@ public class Enemy : MonoBehaviour
             currentState = State.Idle;
             _boxCollider2D.enabled = false;
             _capsuleCollider2D.enabled = false;
+            if (firstDie)
+            {
+                var random = new System.Random();
+                if (random.Next(3) == 1)
+                    Instantiate(potion, transform.position, Quaternion.identity);
+                firstDie = false;
+            }
         }
         switch (currentState)
         {
@@ -163,6 +170,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        // enemyVisual.EnemyHurt();
+        if (!doChasingEnemy)
+        {
+            doChasingEnemy = true;
+            foreach (var mate in teammates)
+                mate.GetComponent<Enemy>().doChasingEnemy = true;
+        }
     }
 }

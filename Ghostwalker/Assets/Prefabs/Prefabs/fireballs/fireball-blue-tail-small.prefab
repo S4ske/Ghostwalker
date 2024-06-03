@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  damage: 2
+  damage: 1
   distance: 0.5
   whatIsSolid:
     serializedVersion: 2

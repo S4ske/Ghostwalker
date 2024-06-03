@@ -101,10 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4270668745882443878, guid: ec6704bf86dd9b14b9384566bb74c549, type: 3}
   shotPoint: {fileID: 2963158799454616938}
-  manaCost: 7
+  manaCost: 15
   weaponName: Magic Staff
   collectable: {fileID: 410132654381467226, guid: 29e488ff55db25541ade65ebd64d700d, type: 3}
-  startTimeBtwShots: 0.5
+  startTimeBtwShots: 1
 --- !u!61 &2980221819168594234
 BoxCollider2D:
   m_ObjectHideFlags: 0
