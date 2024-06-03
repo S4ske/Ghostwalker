@@ -8,7 +8,7 @@ public class ChangeScene : MonoBehaviour
 {
     public void LoadScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Cinematic");
     }
 
     public void Exit()
