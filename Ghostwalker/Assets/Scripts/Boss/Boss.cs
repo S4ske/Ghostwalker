@@ -1,6 +1,8 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Boss : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class Boss : MonoBehaviour
     private BoxCollider2D boxCollider2D;
 
     [SerializeField] private Player player;
+    [SerializeField] private Enemy enemy;
 
     [SerializeField] private int maxHealth;
     private float currentHealth;
@@ -65,7 +68,6 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Animator.SetBool("IsDie", true);
@@ -105,6 +107,8 @@ public class Boss : MonoBehaviour
         {
             UseLaserAbility();
             abilityTimer = abilityCooldown;
+            var enemyClone = Instantiate(enemy, new Vector3(0, 0, 0), quaternion.identity);
+            enemyClone.GetComponent<Enemy>().PlayerPosition = player.transform;
         }
 
         if (currentHealth < maxHealth / 2)
@@ -112,6 +116,7 @@ public class Boss : MonoBehaviour
             navMeshAgent.speed += 5;
             attackRate = (float)0.2;
             abilityCooldown = 7;
+            _roamimgTimerMax = 2;
         }
     }
 
@@ -178,7 +183,6 @@ public class Boss : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
-        Debug.Log(currentHealth);
         currentHealth -= damage;
         healthSlider.value = currentHealth;
     }

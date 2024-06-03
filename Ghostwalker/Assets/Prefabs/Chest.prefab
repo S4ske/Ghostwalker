@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 5226100147549738715}
   - component: {fileID: 1677836484634112104}
   - component: {fileID: 6306639037902429615}
+  - component: {fileID: 107834046989440501}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -269,12 +270,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098899e6e3bd4ab4f87a50a1726122ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 7804441857231242623, guid: 84189a72f02c24b48b0c163919463b51, type: 3}
-  - {fileID: 1525656059851718034, guid: 67a74a1c71888a94398ef548b3d60105, type: 3}
+  weaponsPool: {fileID: 0}
   armorPotion: {fileID: 5738149003084033530, guid: e4291af2850c4634ea8181b0658f0672, type: 3}
   manaPotion: {fileID: 9037803733001436705, guid: 6ad2ea50aca608542b3d4f158d0a684b, type: 3}
   text: {fileID: 1220822904283232556}
+--- !u!114 &107834046989440501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400885311654909269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &3290828051847067200
 GameObject:
   m_ObjectHideFlags: 0

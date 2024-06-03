@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool doAttackingEnemy;
 
     [SerializeField] private float chasingSpeed;
-    [SerializeField] private Transform PlayerPosition;
+    [SerializeField] public Transform PlayerPosition;
 
     private NavMeshAgent navMeshAgent;
     private State state;
@@ -66,16 +66,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         StateHandler();
-        // if (startHealht != health)
-        // {
-        //     TakeHit = true;
-        //     startHealht = health;
-        // }
-        // if (Attack)
-        //     enemySword?.Attack();
-
-        // if (health <= 0)
-        //     Destroy(gameObject);
     }
 
 

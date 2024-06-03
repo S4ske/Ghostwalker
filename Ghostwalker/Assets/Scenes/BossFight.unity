@@ -14148,7 +14148,7 @@ GameObject:
   - component: {fileID: 1234850890}
   m_Layer: 7
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14188,7 +14188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 715055121}
-  maxHealth: 200
+  enemy: {fileID: 1313779051752960404, guid: cc02e0fa7b621c343af896cc9ba56a94, type: 3}
+  maxHealth: 76
   speed: 3
   laserPrefab: {fileID: 1275635392787232, guid: ab6891f5e3e61c54fb1b5a692cee6a19, type: 3}
   _roamingDistanceMax: 15
@@ -14236,7 +14237,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0016083717, y: -0.1933099}
+  m_Offset: {x: -0.0016083717, y: -0.1474191}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14247,7 +14248,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.3006678, y: 3.6133802}
+  m_Size: {x: 3.3006678, y: 3.7051618}
   m_EdgeRadius: 0
 --- !u!50 &1234850893
 Rigidbody2D:
@@ -14803,7 +14804,7 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 0
+  m_OverrideVoxelSize: 1
   m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
