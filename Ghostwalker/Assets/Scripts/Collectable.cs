@@ -13,7 +13,7 @@ public class Collectable : MonoBehaviour
     [SerializeField] private CollectableType collectableType;
     [SerializeField] private Text helpMessage;
     [SerializeField] private GameObject weapon;
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Player>() && other.isTrigger)
@@ -22,23 +22,28 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<Player>() && other.isTrigger && Input.GetKey(KeyCode.E))
+        if (other.GetComponent<Player>() && other.isTrigger)
         {
-            switch (collectableType)
+            var player = other.GetComponent<Player>();
+            if (player.pressedE)
             {
-                case CollectableType.Weapon:
-                    var collect = other.GetComponent<Inventory>().AddWeapon(weapon);
-                    if (collect)
+                player.pressedE = false;
+                player.currentECd = 0;
+                switch (collectableType)
+                {
+                    case CollectableType.Weapon:
+                        other.GetComponent<Inventory>().AddWeapon(weapon);
                         Destroy(gameObject);
-                    break;
-                case CollectableType.ArmorPotion:
-                    other.GetComponent<Player>().GetArmor(3);
-                    Destroy(gameObject);
-                    break;
-                case CollectableType.ManaPotion:
-                    other.GetComponent<Player>().GetMana(25);
-                    Destroy(gameObject);
-                    break;
+                        break;
+                    case CollectableType.ArmorPotion:
+                        other.GetComponent<Player>().GetArmor(3);
+                        Destroy(gameObject);
+                        break;
+                    case CollectableType.ManaPotion:
+                        other.GetComponent<Player>().GetMana(25);
+                        Destroy(gameObject);
+                        break;
+                }
             }
         }
     }
