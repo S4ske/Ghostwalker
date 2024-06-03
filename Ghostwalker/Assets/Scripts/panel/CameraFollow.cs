@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     
     void Update()
     {
-        transform.position = Vector2.Lerp(transform.position, target.position, cameraSpeed * Time.deltaTime);
+        var abc = Vector2.Lerp(transform.position, target.position, cameraSpeed * Time.deltaTime);
+        transform.position = new Vector3(abc.x, abc.y, -10);
     }
 }
