@@ -516,7 +516,7 @@ Transform:
   m_GameObject: {fileID: 328081911}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.064, y: 0.516, z: 1}
+  m_LocalPosition: {x: 0.095, y: -0.027, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1179,6 +1179,10 @@ PrefabInstance:
     - target: {fileID: 2540439529379654686, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
       propertyPath: maxArmor
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540439529379654686, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
+      propertyPath: WithMantle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2540439529379654686, guid: fcb56fc8116281b449311aa872bf11ba, type: 3}
       propertyPath: hpParameter
@@ -14927,7 +14931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 715055121}
   enemy: {fileID: 1313779051752960404, guid: cc02e0fa7b621c343af896cc9ba56a94, type: 3}
-  maxHealth: 10
+  maxHealth: 80
   speed: 3
   spawnPoints:
   - {fileID: 1994115571}
@@ -14980,9 +14984,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.031354845, y: -0.06922645}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.45, y: 0.6}
+    border: {x: 0, y: 0, z: 0.16, w: 0}
+    pivot: {x: 0.30215794, y: 0.53969586}
+    oldSize: {x: 0.45, y: 0.62}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -15760,7 +15764,7 @@ Transform:
   m_GameObject: {fileID: 1641036638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.083, y: 0.356, z: 1}
+  m_LocalPosition: {x: -0.124, y: 0.056, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
