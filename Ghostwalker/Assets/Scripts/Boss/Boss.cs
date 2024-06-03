@@ -44,6 +44,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float projectileSwitchInterval;
     
     [SerializeField] private Slider healthSlider;
+    private float dieTimer = 4f;
     
     private float abilityCooldown = 20f;
     private float abilityTimer;
@@ -72,6 +73,10 @@ public class Boss : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            if (dieTimer <= 0)
+                SceneManager.LoadScene("EndGame");
+            else
+                dieTimer -= Time.deltaTime;
             navMeshAgent.speed = 0;
             Animator.SetBool("IsDie", true);
             return;
@@ -193,7 +198,5 @@ public class Boss : MonoBehaviour
     {
         currentHealth -= damage;
         healthSlider.value = currentHealth;
-        if (currentHealth <= 0)
-            SceneManager.LoadScene("EndGame");
     }
 }
