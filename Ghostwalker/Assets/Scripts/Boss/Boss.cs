@@ -125,6 +125,7 @@ public class Boss : MonoBehaviour
 
         if (currentHealth < maxHealth / 2)
         {
+            navMeshAgent.speed += 1f;
             attackRate = 0.25f;
             abilityCooldown = 15;
             Animator.SetBool("IsAngry", true);
