@@ -6,6 +6,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float moveDistance;
     [SerializeField] private float damage;
+    public Boss boss;
 
     private Vector3 initialPosition;
     private float moveTimer;
@@ -22,6 +23,11 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
+        if (boss.isDie)
+        {
+            Destroy(gameObject);
+            return;
+        }
         transform.RotateAround(transform.parent.position, Vector3.forward, rotateSpeed * Time.deltaTime);
 
         moveTimer += Time.deltaTime;

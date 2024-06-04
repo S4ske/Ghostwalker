@@ -24,6 +24,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private float _roamimgDistanceMin = 3f;
     [SerializeField] private float _roamimgTimerMax = 2f;
 
+    public bool isDie;
+
     private float _roamingTimer;
     private Vector3 _roamPosition;
     private Vector3 _startingPosition;
@@ -73,6 +75,7 @@ public class Boss : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            isDie = true;
             if (dieTimer <= 0)
                 SceneManager.LoadScene("EndGame");
             else
@@ -176,6 +179,7 @@ public class Boss : MonoBehaviour
             var laserScript = laser.GetComponent<Laser>();
             if (laserScript != null)
             {
+                laserScript.boss = this;
                 laserScript.RotateAroundBoss(transform);
             }
         }
