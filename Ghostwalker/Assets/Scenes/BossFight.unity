@@ -14935,7 +14935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 715055121}
   enemy: {fileID: 1313779051752960404, guid: cc02e0fa7b621c343af896cc9ba56a94, type: 3}
-  maxHealth: 5
+  maxHealth: 80
   speed: 3
   spawnPoints:
   - {fileID: 1994115571}
